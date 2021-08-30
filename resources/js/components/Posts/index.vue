@@ -2,35 +2,17 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Title</th>
+                <th>Name</th>
                 <th>Post</th>
                 <th>Created date</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Something</td>
-                <td>Longer text</td>
-                <td>2020-01-23</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Something2</td>
-                <td>Longer text2</td>
-                <td>2020-01-22</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Something3</td>
-                <td>Longer text3</td>
-                <td>2020-03-23</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Something3</td>
-                <td>Longer text3</td>
-                <td>2020-03-23</td>
+            <tr v-for="post in posts" v-bind:key="post.id">
+                <td>{{ post.title }}</td>
+                <td>{{ post.post_text }}</td>
+                <td>{{ post.created_at }}</td>
                 <td></td>
             </tr>
         </tbody>
@@ -38,5 +20,17 @@
 </template>
 
 <script>
+    export default{
+        data(){
+            return{
+                posts:[]
+            }
+        },
+        mounted(){
+            axios.get('/api/posts').then(response =>{
+                this.posts = response.data
+            })
+        }
+    }
 
 </script>
