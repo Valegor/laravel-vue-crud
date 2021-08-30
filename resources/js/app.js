@@ -5,11 +5,13 @@
  */
 
 require('./bootstrap');
+//import pagination from 'laravel-vue-pagination';
 
 window.Vue = require('vue').default;
 
-
 Vue.component('posts-index', require('./components/Posts/Index').default);
+//Vue.component('pagination', pagination);
+Vue.component('pagination', require('laravel-vue-pagination'));
 
 
 const app = new Vue({
