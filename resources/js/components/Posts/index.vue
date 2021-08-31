@@ -1,9 +1,18 @@
 <template>
 <div>
+    <select v-model="category_id" class="form-control col-md-3">
+            <option value="">-- Choose Category --</option>
+            <option v-for="category in categories"
+                v-bind:key="category.id"
+                :value="category.id"
+            >
+                {{ category.name }}
+            </option>
+    </select>
     <table class="table">
         <thead>
             <tr>
-                <th>Name</th>
+                <th>Names</th>
                 <th>Post</th>
                 <th>Created date</th>
                 <th>Actions</th>
@@ -26,18 +35,24 @@
     export default{
         data(){
             return{
-                posts:{}
+                posts:{},
+                categories:{},
+                category_id: ''
             }
         },
         mounted(){
-            console.log (this.getResults())
-            // axios.get('/api/posts').then(response =>{
-            //     this.posts = response.data.data
-            // })
+            axios.get('/api/categories')
+				.then(response => {
+					this.categories = response.data.data
+			}),
+            this.getResults()
+        },
+        watch: {
+            category_id(value) { this.getResults() }
         },
         methods: {
 		getResults(page = 1) {
-			axios.get('/api/posts?page=' + page)
+			axios.get('/api/posts?page=' + page + '&category_id=' + this.category_id)
 				.then(response => {
 					this.posts = response.data;
 				});
