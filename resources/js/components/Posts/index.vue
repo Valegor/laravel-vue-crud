@@ -12,9 +12,21 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Names</th>
-                <th>Post</th>
-                <th>Created date</th>
+                <th>
+                    <a href="#" @click.prevent="change_sort('title')">Title</a>
+                    <span v-if="this.sort_field == 'title' && this.sort_direction == 'asc'">&uarr;</span>
+                    <span v-if="this.sort_field == 'title' && this.sort_direction == 'desc'">&darr;</span> 
+                </th>
+                <th>
+                    <a href="#" @click.prevent="change_sort('post_text')">Post Text</a>
+                    <span v-if="this.sort_field == 'post_text' && this.sort_direction == 'asc'">&uarr;</span>
+                    <span v-if="this.sort_field == 'post_text' && this.sort_direction == 'desc'">&darr;</span> 
+                </th>
+                <th>
+                    <a href="#" @click.prevent="change_sort('created_at')">Created Date</a>
+                    <span v-if="this.sort_field == 'created_at' && this.sort_direction == 'asc'">&uarr;</span>
+                    <span v-if="this.sort_field == 'created_at' && this.sort_direction == 'desc'">&darr;</span> 
+                </th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -37,7 +49,9 @@
             return{
                 posts:{},
                 categories:{},
-                category_id: ''
+                category_id: '',
+                sort_field: 'created_at',
+                sort_direction: 'desc',
             }
         },
         mounted(){
@@ -51,8 +65,23 @@
             category_id(value) { this.getResults() }
         },
         methods: {
+        change_sort(field){
+            console.log('change sort worked')
+            if(this.sort_field === field) {
+                this.sort_direction = this.sort_direction === 'asc' ? 'desc': 'asc'
+            } else {
+                this.sort_field = field
+                this.sort_direction = 'asc'
+            }
+            this.sort_field = field
+            this.getResults()
+        },
 		getResults(page = 1) {
-			axios.get('/api/posts?page=' + page + '&category_id=' + this.category_id)
+			axios.get('/api/posts?page=' + page 
+            + '&category_id=' + this.category_id
+            + '&sort_field=' + this.sort_field
+            + '&sort_direction=' + this.sort_direction
+            )
 				.then(response => {
 					this.posts = response.data;
 				});
