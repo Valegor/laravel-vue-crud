@@ -13,10 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::any('{query}',
+//     function() { return redirect('/home'); })
+//     ->where('query', '.*');
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::fallback(function ()
+{
+    return redirect()->to('/');
+});
+
+
+//Auth::routes();
+
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

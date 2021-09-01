@@ -15,10 +15,12 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <router-link to="/posts" class="nav-link">Posts</router-link>
+                            <router-link :to="{ name:'posts.index' }" class="nav-link">Posts</router-link>
+                            <!-- <router-link to="/posts" class="nav-link">Posts</router-link> -->
                         </li>
                         <li class="nav-item">
-                            <router-link to="/posts/create" class="nav-link">Add new post</router-link>
+                            <!-- <router-link to="/posts/create" class="nav-link">Add new post</router-link> -->
+                            <router-link :to="{ name:'posts.create' }" class="nav-link">Add new pos</router-link>
                         </li>
                     </ul>
                 </div>

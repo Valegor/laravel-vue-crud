@@ -26,12 +26,12 @@ const router = new VueRouter({
         },
         {
             path: '/posts',
-            name: 'posts-index',
+            name: 'posts.index',
             component: PostIndex
         },
         {
             path: '/posts/create',
-            name: 'post-create',
+            name: 'posts.create',
             component: PostCreate
         },
         {

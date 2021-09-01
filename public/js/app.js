@@ -1881,6 +1881,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "App"
 });
@@ -1898,6 +1900,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
 //
 //
 //
@@ -1972,6 +1976,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
 //
 //
 //
@@ -2132,11 +2138,11 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__.default({
     component: _components_App_vue__WEBPACK_IMPORTED_MODULE_2__.default
   }, {
     path: '/posts',
-    name: 'posts-index',
+    name: 'posts.index',
     component: _components_Posts_Index_vue__WEBPACK_IMPORTED_MODULE_3__.default
   }, {
     path: '/posts/create',
-    name: 'post-create',
+    name: 'posts.create',
     component: _components_Posts_Create_vue__WEBPACK_IMPORTED_MODULE_4__.default
   }, {
     path: '/posts/edit',
@@ -38511,7 +38517,10 @@ var render = function() {
                     [
                       _c(
                         "router-link",
-                        { staticClass: "nav-link", attrs: { to: "/posts" } },
+                        {
+                          staticClass: "nav-link",
+                          attrs: { to: { name: "posts.index" } }
+                        },
                         [_vm._v("Posts")]
                       )
                     ],
@@ -38526,9 +38535,9 @@ var render = function() {
                         "router-link",
                         {
                           staticClass: "nav-link",
-                          attrs: { to: "/posts/create" }
+                          attrs: { to: { name: "posts.create" } }
                         },
-                        [_vm._v("Add new post")]
+                        [_vm._v("Add new pos")]
                       )
                     ],
                     1
@@ -38625,7 +38634,10 @@ var render = function() {
                     [
                       _c(
                         "router-link",
-                        { staticClass: "nav-link", attrs: { to: "/posts" } },
+                        {
+                          staticClass: "nav-link",
+                          attrs: { to: { name: "posts.index" } }
+                        },
                         [_vm._v("Posts")]
                       )
                     ],
@@ -38640,9 +38652,9 @@ var render = function() {
                         "router-link",
                         {
                           staticClass: "nav-link",
-                          attrs: { to: "/posts/create" }
+                          attrs: { to: { name: "posts.create" } }
                         },
-                        [_vm._v("Add new post")]
+                        [_vm._v("Add new pos")]
                       )
                     ],
                     1
@@ -38761,7 +38773,10 @@ var render = function() {
                       [
                         _c(
                           "router-link",
-                          { staticClass: "nav-link", attrs: { to: "/posts" } },
+                          {
+                            staticClass: "nav-link",
+                            attrs: { to: { name: "posts.index" } }
+                          },
                           [_vm._v("Posts")]
                         )
                       ],
@@ -38776,9 +38791,9 @@ var render = function() {
                           "router-link",
                           {
                             staticClass: "nav-link",
-                            attrs: { to: "/posts/create" }
+                            attrs: { to: { name: "posts.create" } }
                           },
-                          [_vm._v("Add new post")]
+                          [_vm._v("Add new pos")]
                         )
                       ],
                       1
