@@ -36,9 +36,17 @@
           Post Title
           <br>
           <input type="text" v-model="fields.title" class="form-control" />
+          <div class="alert alert-danger" v-if="errors && errors.title" >
+              {{ this.errors.title[0] }}
+          </div>
+            
+            errors
           <br>
           Post Text 
          <br>
+          <div class="alert alert-danger" v-if="errors && errors.post_text" >
+              {{ this.errors.post_text[0] }}
+          </div>
          <textarea rows="10" v-model="fields.post_text" class="form-control"></textarea>
          <br>
          Category 
@@ -51,6 +59,9 @@
             </option>
 
          </select>
+         <div class="alert alert-danger" v-if="errors && errors.category_id" >
+              {{ this.errors.category_id[0] }}
+          </div>
          <br>
          <input type="submit" class="btm btn-primary" value="Save Post" />
          <br>
@@ -70,7 +81,8 @@ export default {
                 title: '',
                 post_text: '',
                 category_id: '',
-            }
+            },
+            errors:{}
             }
         },
         mounted(){
@@ -84,7 +96,12 @@ export default {
                 axios.post('/api/posts', this.fields)
 				.then(response => {
 					this.$router.push('/')
-			})
+			}).catch( error => {
+                if(error.response.status === 422){
+                    this.errors = error.response.data.errors
+                    console.log(this.errors.category_id[0])
+                }
+            })
             }
         }
 }
