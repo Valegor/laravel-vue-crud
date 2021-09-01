@@ -2110,12 +2110,10 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var _components_App_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/App.vue */ "./resources/js/components/App.vue");
-/* harmony import */ var _components_Posts_Index_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Posts/Index.vue */ "./resources/js/components/Posts/Index.vue");
-/* harmony import */ var _components_Posts_Create_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Posts/Create.vue */ "./resources/js/components/Posts/Create.vue");
-/* harmony import */ var _components_Posts_Edit_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Posts/Edit.vue */ "./resources/js/components/Posts/Edit.vue");
-/* harmony import */ var laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! laravel-vue-pagination */ "./node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.common.js");
-/* harmony import */ var laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./routes */ "./resources/js/routes/index.js");
+/* harmony import */ var _components_App_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/App.vue */ "./resources/js/components/App.vue");
+/* harmony import */ var laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! laravel-vue-pagination */ "./node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.common.js");
+/* harmony import */ var laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_4__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -2128,39 +2126,17 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 vue__WEBPACK_IMPORTED_MODULE_0__.default.use(vue_router__WEBPACK_IMPORTED_MODULE_1__.default);
 
 
-
-
-var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__.default({
-  mode: 'history',
-  routes: [{
-    path: '/',
-    name: 'app',
-    component: _components_App_vue__WEBPACK_IMPORTED_MODULE_2__.default
-  }, {
-    path: '/posts',
-    name: 'posts.index',
-    component: _components_Posts_Index_vue__WEBPACK_IMPORTED_MODULE_3__.default
-  }, {
-    path: '/posts/create',
-    name: 'posts.create',
-    component: _components_Posts_Create_vue__WEBPACK_IMPORTED_MODULE_4__.default
-  }, {
-    path: '/posts/edit',
-    name: 'post-edit',
-    component: _components_Posts_Edit_vue__WEBPACK_IMPORTED_MODULE_5__.default
-  }]
-});
  //window.Vue = require('vue').default;
 //Vue.component('posts-index', require('./components/Posts/Index').default);
 
-vue__WEBPACK_IMPORTED_MODULE_0__.default.component('pagination', (laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_6___default()));
+vue__WEBPACK_IMPORTED_MODULE_0__.default.component('pagination', (laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_4___default()));
 vue__WEBPACK_IMPORTED_MODULE_0__.default.component('pagination', __webpack_require__(/*! laravel-vue-pagination */ "./node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.common.js"));
 var app = new vue__WEBPACK_IMPORTED_MODULE_0__.default({
   el: '#app',
   comments: {
-    App: _components_App_vue__WEBPACK_IMPORTED_MODULE_2__.default
+    App: _components_App_vue__WEBPACK_IMPORTED_MODULE_3__.default
   },
-  router: router
+  router: new vue_router__WEBPACK_IMPORTED_MODULE_1__.default(_routes__WEBPACK_IMPORTED_MODULE_2__.default)
 });
 
 /***/ }),
@@ -2206,6 +2182,48 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/routes/index.js":
+/*!**************************************!*\
+  !*** ./resources/js/routes/index.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _components_App_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/App.vue */ "./resources/js/components/App.vue");
+/* harmony import */ var _components_Posts_Index_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Posts/Index.vue */ "./resources/js/components/Posts/Index.vue");
+/* harmony import */ var _components_Posts_Create_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Posts/Create.vue */ "./resources/js/components/Posts/Create.vue");
+/* harmony import */ var _components_Posts_Edit_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Posts/Edit.vue */ "./resources/js/components/Posts/Edit.vue");
+
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  mode: 'history',
+  routes: [{
+    path: '/',
+    name: 'app',
+    component: _components_App_vue__WEBPACK_IMPORTED_MODULE_0__.default
+  }, {
+    path: '/posts',
+    name: 'posts.index',
+    component: _components_Posts_Index_vue__WEBPACK_IMPORTED_MODULE_1__.default
+  }, {
+    path: '/posts/create',
+    name: 'posts.create',
+    component: _components_Posts_Create_vue__WEBPACK_IMPORTED_MODULE_2__.default
+  }, {
+    path: '/posts/edit',
+    name: 'post-edit',
+    component: _components_Posts_Edit_vue__WEBPACK_IMPORTED_MODULE_3__.default
+  }]
+});
 
 /***/ }),
 
@@ -38636,7 +38654,11 @@ var render = function() {
                         "router-link",
                         {
                           staticClass: "nav-link",
-                          attrs: { to: { name: "posts.index" } }
+                          attrs: {
+                            "active-class": "active-menu",
+                            exact: "",
+                            to: { name: "posts.index" }
+                          }
                         },
                         [_vm._v("Posts")]
                       )
@@ -38652,7 +38674,11 @@ var render = function() {
                         "router-link",
                         {
                           staticClass: "nav-link",
-                          attrs: { to: { name: "posts.create" } }
+                          attrs: {
+                            "active-class": "active-menu",
+                            exact: "",
+                            to: { name: "posts.create" }
+                          }
                         },
                         [_vm._v("Add new pos")]
                       )
@@ -38775,7 +38801,11 @@ var render = function() {
                           "router-link",
                           {
                             staticClass: "nav-link",
-                            attrs: { to: { name: "posts.index" } }
+                            attrs: {
+                              "active-class": "active-menu",
+                              exact: "",
+                              to: { name: "posts.index" }
+                            }
                           },
                           [_vm._v("Posts")]
                         )
@@ -38791,7 +38821,11 @@ var render = function() {
                           "router-link",
                           {
                             staticClass: "nav-link",
-                            attrs: { to: { name: "posts.create" } }
+                            attrs: {
+                              "active-class": "active-menu",
+                              exact: "",
+                              to: { name: "posts.create" }
+                            }
                           },
                           [_vm._v("Add new pos")]
                         )

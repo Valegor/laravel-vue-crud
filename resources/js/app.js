@@ -11,37 +11,9 @@ import VueRouter from 'vue-router';
 
 Vue.use(VueRouter)
 
+import routes from './routes'
+
 import App from "./components/App.vue";
-import PostIndex from "./components/Posts/Index.vue";
-import PostCreate from "./components/Posts/Create.vue";
-import PostEdit from "./components/Posts/Edit.vue";
-
-const router = new VueRouter({
-    mode: 'history',
-    routes: [
-        {
-            path: '/',
-            name: 'app',
-            component: App
-        },
-        {
-            path: '/posts',
-            name: 'posts.index',
-            component: PostIndex
-        },
-        {
-            path: '/posts/create',
-            name: 'posts.create',
-            component: PostCreate
-        },
-        {
-            path: '/posts/edit',
-            name: 'post-edit',
-            component: PostEdit
-        },
-    ]
-});
-
 
 import pagination from 'laravel-vue-pagination';
 
@@ -55,5 +27,5 @@ Vue.component('pagination', require('laravel-vue-pagination'));
 const app = new Vue({
     el: '#app',
     comments: {App},
-    router
+    router: new VueRouter(routes)
 });
