@@ -31,8 +31,31 @@
         </main>
     </div>
 
-    <div>
-      Create form here
+    <div class="container">
+      <form @submit.prevent="submit_form">
+          Post Title
+          <br>
+          <input type="text" v-model="fields.title" class="form-control" />
+          <br>
+          Post Text 
+         <br>
+         <textarea rows="10" v-model="fields.post_text" class="form-control"></textarea>
+         <br>
+         Category 
+         <select class="form-control" v-model="fields.category_id">
+            <option v-for="category in categories"
+                v-bind:key="category.id"
+                :value="category.id"
+                >
+                {{ category.name }}
+            </option>
+
+         </select>
+         <br>
+         <input type="submit" class="btm btn-primary" value="Save Post" />
+         <br>
+         <p></p>
+      </form>
   </div>
 </div>
 
@@ -40,7 +63,30 @@
 
 <script>
 export default {
-
+    data(){
+        return{
+            categories:{},
+            fields: {
+                title: '',
+                post_text: '',
+                category_id: '',
+            }
+            }
+        },
+        mounted(){
+            axios.get('/api/categories')
+				.then(response => {
+					this.categories = response.data.data
+			})
+        },
+        methods: {
+            submit_form(){
+                axios.post('/api/posts', this.fields)
+				.then(response => {
+					this.$router.push('/')
+			})
+            }
+        }
 }
 </script>
 
