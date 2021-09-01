@@ -1,5 +1,6 @@
 <template>
     <div>
+    <div>
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="/">
@@ -26,6 +27,10 @@
         <main class="py-4 container">
             <router-view/>
         </main>
+    </div>
+    <div>
+        <h1>LARAVEL VUE</h1>
+    </div>     
     </div>
 </template>
 
