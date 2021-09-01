@@ -10,7 +10,8 @@
     </head>
     <body>
         <div id="app">
-            <posts-index></posts-index>
+            {{-- <post-index></post-index> --}}
+            <router-view></router-view>
         </div>
         <script src="{{asset('js/app.js')}}"></script>
     </body>

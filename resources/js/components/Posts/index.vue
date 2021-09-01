@@ -1,5 +1,11 @@
 <template>
 <div>
+    <p>
+        <router-link :to="{ name: 'post-edit'}">Edit Post</router-link>
+    </p>
+        <p>
+        <router-link :to="{ name: 'post-create'}">Create Post</router-link>
+    </p>
     <select v-model="category_id" class="form-control col-md-3">
             <option value="">-- Choose Category --</option>
             <option v-for="category in categories"
