@@ -8,8 +8,10 @@ require('./bootstrap');
 
 import Vue from 'vue'
 import VueRouter from 'vue-router';
+import VueSweetAlert2 from "vue-sweetalert2"
 
 Vue.use(VueRouter)
+Vue.use(VueSweetAlert2)
 
 import routes from './routes'
 
