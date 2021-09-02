@@ -2277,6 +2277,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2301,8 +2302,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     change_sort: function change_sort(field) {
-      console.log('change sort worked');
-
       if (this.sort_field === field) {
         this.sort_direction = this.sort_direction === 'asc' ? 'desc' : 'asc';
       } else {
@@ -2319,6 +2318,30 @@ __webpack_require__.r(__webpack_exports__);
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
       axios.get('/api/posts?page=' + page + '&category_id=' + this.category_id + '&sort_field=' + this.sort_field + '&sort_direction=' + this.sort_direction).then(function (response) {
         _this2.posts = response.data;
+      });
+    },
+    delete_post: function delete_post(post_id) {
+      var _this3 = this;
+
+      this.$swal({
+        title: 'A You Shore?',
+        text: 'No No No',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Post Deleted!'
+      }).then(function (result) {
+        if (result.value) {
+          axios["delete"]('/api/posts/' + post_id).then(function (response) {
+            _this3.$swal('Post deleted successfully');
+
+            _this3.getResults();
+          })["catch"](function (error) {
+            _this3.$swal({
+              icon: 'error',
+              title: 'Error Deleted'
+            });
+          });
+        }
       });
     }
   }
@@ -39648,6 +39671,7 @@ var render = function() {
                   _c(
                     "router-link",
                     {
+                      staticClass: "btn btn-info btn-small",
                       attrs: {
                         to: { name: "posts.edit", params: { id: post.id } }
                       }
@@ -39657,6 +39681,19 @@ var render = function() {
                         "\n                            Edit\n                    "
                       )
                     ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger btn-small",
+                      on: {
+                        click: function($event) {
+                          return _vm.delete_post(post.id)
+                        }
+                      }
+                    },
+                    [_vm._v("Delete")]
                   )
                 ],
                 1

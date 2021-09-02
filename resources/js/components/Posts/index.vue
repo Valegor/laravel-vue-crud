@@ -66,9 +66,10 @@
                 <td>{{ post.post_text.substring(0,35) }}</td>
                 <td>{{ post.created_at }}</td>
                 <td>
-                    <router-link :to="{name:'posts.edit', params:{ id: post.id}}">
+                    <router-link class="btn btn-info btn-small" :to="{name:'posts.edit', params:{ id: post.id}}">
                             Edit
                     </router-link>
+                    <button class="btn btn-danger btn-small" @click="delete_post(post.id)">Delete</button>
                 </td>
             </tr>
         </tbody>
@@ -100,7 +101,6 @@
         },
         methods: {
         change_sort(field){
-            console.log('change sort worked')
             if(this.sort_field === field) {
                 this.sort_direction = this.sort_direction === 'asc' ? 'desc': 'asc'
             } else {
@@ -119,8 +119,25 @@
 				.then(response => {
 					this.posts = response.data;
 				});
-		}
-	}
+		},
+        delete_post(post_id){
+                this.$swal({
+                    title: 'A You Shore?',
+                    text: 'No No No',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Post Deleted!'
+                }).then((result) =>{
+                if(result.value){
+                axios.delete('/api/posts/' + post_id)
+                        .then(response => {
+                        this.$swal('Post deleted successfully');   
+                        this.getResults()
+                }).catch( error => {
+                    this.$swal({icon:'error', title: 'Error Deleted'}) 
+                })}})
+            }
+        }
     }
 
 </script>
