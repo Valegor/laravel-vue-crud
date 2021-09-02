@@ -123,8 +123,8 @@ export default {
                 if(error.response.status === 422){
                     this.errors = error.response.data.errors
                     console.log(this.errors.category_id[0])
-                    this.form_submitting = false
                 }
+            this.form_submitting = false    
             })
             }
         }

@@ -23,8 +23,8 @@ export default {
             component: PostCreate
         },
         {
-            path: '/posts/edit',
-            name: 'post-edit',
+            path: '/edit/:id',
+            name: 'posts.edit',
             component: PostEdit
         },
     ]

@@ -65,7 +65,11 @@
                 <td>{{ post.title }}</td>
                 <td>{{ post.post_text.substring(0,35) }}</td>
                 <td>{{ post.created_at }}</td>
-                <td></td>
+                <td>
+                    <router-link :to="{name:'posts.edit', params:{ id: post.id}}">
+                            Edit
+                    </router-link>
+                </td>
             </tr>
         </tbody>
     </table>
