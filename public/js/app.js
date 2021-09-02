@@ -1977,6 +1977,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -1984,7 +1989,8 @@ __webpack_require__.r(__webpack_exports__);
       fields: {
         title: '',
         post_text: '',
-        category_id: ''
+        category_id: '',
+        thumbnail: null
       },
       errors: {},
       form_submitting: false
@@ -1998,12 +2004,21 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
+    select_file: function select_file(event) {
+      this.fields.thumbnail = event.target.files[0];
+    },
     submit_form: function submit_form() {
       var _this2 = this;
 
       console.log('submit');
       this.form_submitting = true;
-      axios.post('/api/posts', this.fields).then(function (response) {
+      var fields = new FormData();
+
+      for (var key in this.fields) {
+        fields.append(key, this.fields[key]);
+      }
+
+      axios.post('/api/posts', fields).then(function (response) {
         _this2.$router.push('/');
 
         _this2.form_submitting = false;
@@ -38911,6 +38926,18 @@ var render = function() {
                 )
               ])
             : _vm._e(),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v("\n          Thumbnail:\n          "),
+          _c("br"),
+          _vm._v(" "),
+          _c("input", {
+            attrs: { type: "file" },
+            on: { change: _vm.select_file }
+          }),
+          _vm._v(" "),
+          _c("br"),
+          _c("br"),
           _vm._v(" "),
           _c("br"),
           _vm._v(" "),
